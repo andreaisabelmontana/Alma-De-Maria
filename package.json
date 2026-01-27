@@ -1,0 +1,14 @@
+{
+  "name": "alma-de-maria",
+  "version": "1.0.0",
+  "description": "Alma de María - Artisan jewelry showcase website",
+  "private": true,
+  "scripts": {
+    "test": "node tests/validate.js",
+    "optimize": "node optimize-images.js",
+    "serve": "npx serve -l 8080"
+  },
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}
