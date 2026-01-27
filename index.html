@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alma de Mar&iacute;a | Joyas Artesanales</title>
+    <meta name="description" content="Rosarios, pulseras y escapularios artesanales hechos con amor. Alma de Mar&iacute;a - De la mano de Dios puedes con todo.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== HEADER / NAV ===== -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#inicio" class="nav__logo">
+                <img src="img/logo/Logo secundario.png" alt="Alma de Mar&iacute;a">
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="#inicio" class="nav__link">Inicio</a></li>
+                    <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
+                    <li><a href="#rosarios" class="nav__link">Rosarios</a></li>
+                    <li><a href="#pulseras" class="nav__link">Pulseras</a></li>
+                    <li><a href="#escapulario" class="nav__link">Escapulario</a></li>
+                    <li><a href="#contacto" class="nav__link">Contacto</a></li>
+                </ul>
+                <button class="nav__close" id="nav-close">&times;</button>
+            </div>
+            <button class="nav__toggle" id="nav-toggle">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="inicio">
+        <div class="hero__bg">
+            <img src="img/5H0A2080.jpg" alt="Colecci&oacute;n Alma de Mar&iacute;a">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <img src="img/logo/Logo principal rosa.png" alt="Alma de Mar&iacute;a" class="hero__logo">
+            <p class="hero__tagline">De la mano de Dios puedes con todo. &iexcl;No te rindas!</p>
+            <a href="#rosarios" class="btn btn--primary">Ver Colecci&oacute;n</a>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="nosotros">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__image reveal">
+                    <img src="img/5H0A2022.jpg" alt="Alma de Mar&iacute;a - Joyas artesanales">
+                </div>
+                <div class="about__text reveal">
+                    <span class="section__subtitle">Sobre Nosotros</span>
+                    <h2 class="section__title">Alma de Mar&iacute;a</h2>
+                    <p>En el coraz&oacute;n del dise&ntilde;o de Alma de Mar&iacute;a, se entrelazan elementos que evocan la sutileza de lo cl&aacute;sico y la frescura de lo moderno.</p>
+                    <p>Cada trazo y cada color han sido dise&ntilde;ados para comunicar la esencia de la marca: una celebraci&oacute;n de la belleza, la autenticidad y la pureza del esp&iacute;ritu femenino.</p>
+                    <p class="about__motto"><em>Orar, esperar, confiar y agradecer.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LIFESTYLE BANNER ===== -->
+    <section class="banner">
+        <div class="banner__bg">
+            <img src="img/5H0A2051.jpg" alt="Rosarios Alma de Mar&iacute;a" loading="lazy">
+        </div>
+        <div class="banner__overlay"></div>
+        <div class="banner__content">
+            <h2>Cat&aacute;logo 2024 &ndash; 2025</h2>
+            <p>Joyas artesanales hechas con fe y amor</p>
+        </div>
+    </section>
+
+    <!-- ===== ROSARIOS ===== -->
+    <section class="products" id="rosarios">
+        <div class="container">
+            <span class="section__subtitle reveal">Colecci&oacute;n</span>
+            <h2 class="section__title reveal">Rosarios</h2>
+            <p class="section__description reveal">Cada rosario es &uacute;nico, elaborado artesanalmente con piedras naturales, cristales y medallas religiosas.</p>
+
+            <div class="products__grid">
+                <!-- Row 1 -->
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2082.jpg" alt="Rosario de la Paz" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario de la Paz</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2083.jpg" alt="Rosario Lourdes" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Lourdes</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2084.jpg" alt="Rosario Beatriz" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Beatriz</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2085.jpg" alt="Rosario Elsa" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Elsa</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2086.jpg" alt="Rosario Sof&iacute;a" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Sof&iacute;a</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2087.jpg" alt="Rosario Silvia" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Silvia</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2088.jpg" alt="Rosario F&aacute;tima" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario F&aacute;tima</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2089.jpg" alt="Rosario Paz" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Paz</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2091.jpg" alt="Rosario Esperanza Mini" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Esperanza Mini</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="50000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2092.jpg" alt="Rosario Ni&ntilde;a Maria" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Ni&ntilde;a Maria</h3>
+                        <p class="product-card__price">$50.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2094.jpg" alt="Rosario Jose Mar&iacute;a" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Jose Mar&iacute;a</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2095.jpg" alt="Rosario Luc&iacute;a" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Luc&iacute;a</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2096.jpg" alt="Rosario Sagrada Familia" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Sagrada Familia</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="100000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2097.jpg" alt="Rosario Mar&iacute;a" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Mar&iacute;a</h3>
+                        <p class="product-card__price">$100.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2098.jpg" alt="Rosario Eulalia" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Eulalia</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2100.jpg" alt="Rosario Claudia" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Claudia</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2102.jpg" alt="Rosario Andrea" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Andrea</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="50000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2103.jpg" alt="Rosario Ni&ntilde;a Mar&iacute;a Rosado" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Ni&ntilde;a Mar&iacute;a Rosado</h3>
+                        <p class="product-card__price">$50.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2104.jpg" alt="Rosario Pio" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Pio</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2105.jpg" alt="Rosario Isabel" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Isabel</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Row 6 -->
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2106.jpg" alt="Rosario Ana" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Ana</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2107.jpg" alt="Rosario Andr&eacute;s" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Andr&eacute;s</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="150000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2108.jpg" alt="Rosario Laura" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Laura</h3>
+                        <p class="product-card__price">$150.000 COP</p>
+                    </div>
+                </div>
+
+                <div class="product-card reveal" data-price="120000">
+                    <div class="product-card__image">
+                        <img src="img/5H0A2090.jpg" alt="Rosario Alfonso" loading="lazy">
+                        <div class="product-card__overlay">
+                            <button class="product-card__zoom" aria-label="Ver imagen">+</button>
+                        </div>
+                    </div>
+                    <div class="product-card__info">
+                        <h3>Rosario Alfonso</h3>
+                        <p class="product-card__price">$120.000 COP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PULSERAS ===== -->
+    <section class="pulseras" id="pulseras">
+        <div class="container">
+            <span class="section__subtitle reveal">Accesorios</span>
+            <h2 class="section__title reveal">Pulseras</h2>
+            <p class="section__description reveal">Pulseras artesanales con cristales, cruces y medallas religiosas. Combina varias para un look &uacute;nico.</p>
+
+            <div class="pulseras__grid">
+                <div class="pulseras__main reveal">
+                    <img src="img/5H0A2070.jpg" alt="Colecci&oacute;n de pulseras Alma de Mar&iacute;a" loading="lazy">
+                </div>
+                <div class="pulseras__side">
+                    <div class="pulseras__item reveal">
+                        <img src="img/5H0A2074.jpg" alt="Pulseras en mu&ntilde;eca" loading="lazy">
+                    </div>
+                    <div class="pulseras__item reveal">
+                        <img src="img/5H0A2075.jpg" alt="Pulseras de cristal" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <div class="pulseras__pricing reveal">
+                <div class="pricing-card">
+                    <h3>Pulsera Individual</h3>
+                    <p class="pricing-card__price">$60.000 COP</p>
+                    <p>Cada una</p>
+                </div>
+                <div class="pricing-card pricing-card--featured">
+                    <h3>Set de 3 Pulseras</h3>
+                    <p class="pricing-card__price">$170.000 COP</p>
+                    <p>Ahorra $10.000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ESCAPULARIO ===== -->
+    <section class="escapulario" id="escapulario">
+        <div class="escapulario__grid">
+            <div class="escapulario__image reveal">
+                <img src="img/5H0A2062-Editar.jpg" alt="Escapulario Alma de Mar&iacute;a" loading="lazy">
+            </div>
+            <div class="escapulario__content reveal">
+                <span class="section__subtitle">Especial</span>
+                <h2 class="section__title">Escapulario</h2>
+                <p>Nuestro escapulario artesanal bordado a mano, con im&aacute;genes de la Virgen Mar&iacute;a y el Sagrado Coraz&oacute;n de Jes&uacute;s, elaborado con cuentas doradas y detalles &uacute;nicos.</p>
+                <p class="escapulario__price">$100.000 COP</p>
+                <a href="https://wa.me/573237126697?text=Hola%2C%20me%20interesa%20el%20escapulario%20de%20Alma%20de%20Mar%C3%ADa" class="btn btn--primary" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LIFESTYLE BANNER 2 ===== -->
+    <section class="banner banner--alt">
+        <div class="banner__bg">
+            <img src="img/5H0A2038.jpg" alt="Rosario en altar" loading="lazy">
+        </div>
+        <div class="banner__overlay"></div>
+        <div class="banner__content">
+            <h2>Hechos con Fe y Amor</h2>
+            <p>Cada pieza es elaborada artesanalmente, cuidando cada detalle</p>
+        </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <span class="section__subtitle reveal">Cont&aacute;ctanos</span>
+            <h2 class="section__title reveal">Haz tu Pedido</h2>
+            <p class="section__description reveal">Escr&iacute;benos por WhatsApp o s&iacute;guenos en Instagram para ver nuestras novedades.</p>
+
+            <div class="contacto__grid">
+                <div class="contacto__card reveal">
+                    <div class="contacto__icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Escr&iacute;benos para hacer tu pedido</p>
+                    <a href="https://wa.me/573237126697?text=Hola%2C%20me%20interesan%20los%20productos%20de%20Alma%20de%20Mar%C3%ADa" class="btn btn--outline" target="_blank" rel="noopener">Enviar Mensaje</a>
+                </div>
+
+                <div class="contacto__card reveal">
+                    <div class="contacto__icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>@alma.de.maria.joyas</p>
+                    <a href="https://instagram.com/alma.de.maria.joyas" class="btn btn--outline" target="_blank" rel="noopener">Seguir</a>
+                </div>
+
+                <div class="contacto__card reveal">
+                    <div class="contacto__icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                    </div>
+                    <h3>Medios de Pago</h3>
+                    <p>Efectivo &bull; Nequi &bull; Bancolombia</p>
+                    <p class="contacto__detail">Env&iacute;os a toda Colombia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <img src="img/logo/Logo principal.png" alt="Alma de Mar&iacute;a" class="footer__logo">
+                    <p>De la mano de Dios puedes con todo. &iexcl;No te rindas!</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Navegaci&oacute;n</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#rosarios">Rosarios</a></li>
+                        <li><a href="#pulseras">Pulseras</a></li>
+                        <li><a href="#escapulario">Escapulario</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__social">
+                    <h4>S&iacute;guenos</h4>
+                    <a href="https://instagram.com/alma.de.maria.joyas" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://wa.me/573237126697" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Alma de Mar&iacute;a Joyas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== LIGHTBOX ===== -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" id="lightbox-close">&times;</button>
+        <div class="lightbox__content">
+            <img src="" alt="" id="lightbox-img">
+            <div class="lightbox__info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-price"></p>
+                <a href="" class="btn btn--primary" id="lightbox-wa" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+    <a href="https://wa.me/573237126697?text=Hola%2C%20me%20interesan%20los%20productos%20de%20Alma%20de%20Mar%C3%ADa" class="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
