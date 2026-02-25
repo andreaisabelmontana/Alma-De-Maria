@@ -1,4 +1,4 @@
-# Alma de María - Jewelry Showcase Website
+# Alma de María - Jewelry Showcase Website (FIRST PROTOTYPE ITERATION)
 
 ## Overview
 Static e-commerce showcase website for **Alma de María**, a Colombian artisan jewelry brand specializing in handcrafted rosaries, bracelets, and escapularios. Features a responsive product catalog with lightbox gallery, WhatsApp ordering integration, and scroll-reveal animations.
