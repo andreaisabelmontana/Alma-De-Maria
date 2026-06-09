@@ -154,13 +154,13 @@ ul { list-style: none; }
 }
 
 .nav__logo img {
-    height: 40px;
+    height: 100px;
     width: auto;
     transition: var(--transition);
 }
 
 .header.scrolled .nav__logo img {
-    height: 32px;
+    height: 72px;
 }
 
 .nav__list {
