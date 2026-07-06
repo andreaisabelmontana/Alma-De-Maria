@@ -39,8 +39,8 @@ Static e-commerce showcase website for **Alma de María**, a Colombian artisan j
 
 ```bash
 # Clone and navigate to project
-git clone https://github.com/andreaisabelmontana/AlmaDeMaria.git
-cd AlmaDeMaria
+git clone https://github.com/andreaisabelmontana/Alma-De-Maria.git
+cd Alma-De-Maria
 
 # Start the containerized website
 docker-compose up --build
@@ -61,13 +61,13 @@ docker-compose down
 
 ### Using Python (built-in):
 ```bash
-cd AlmaDeMaria
+cd Alma-De-Maria
 python -m http.server 8080
 ```
 
 ### Using Node.js:
 ```bash
-cd AlmaDeMaria
+cd Alma-De-Maria
 npx serve -l 8080
 ```
 
@@ -101,7 +101,7 @@ node optimize-images.js
 ## Project Structure
 
 ```
-AlmaDeMaria/
+Alma-De-Maria/
 ├── .github/
 │   └── workflows/
 │       ├── static.yml        # GitHub Pages deployment
@@ -214,7 +214,7 @@ Tests validate:
 ---
 
 ## Live Site
-**https://andreaisabelmontana.github.io/AlmaDeMaria/**
+**https://andreaisabelmontana.github.io/Alma-De-Maria/**
 
 ---
 
