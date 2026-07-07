@@ -101,7 +101,7 @@
             category: 'pulseras',
             priceCop: 60000,
             image: 'img/5H0A2070.jpg',
-            images: ['img/5H0A2070.jpg', 'img/5H0A2069.jpg', 'img/5H0A2062-Editar.jpg'],
+            images: ['img/5H0A2070.jpg', 'img/5H0A2069.jpg', 'img/5H0A2065-Editar.jpg'],
             description: 'Pulsera artesanal de cristales azul iridiscente con dijes dorados: cruz, ángel, estrella y medalla religiosa. Combínalas para un look único — el set de 3 ahorra $10.000 COP frente al precio individual.',
             variants: [
                 { name: 'Individual', priceCop: 60000 },
