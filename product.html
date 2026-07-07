@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto | Alma de Mar&iacute;a</title>
+    <meta name="description" content="Joyas artesanales Alma de Mar&iacute;a — detalle de producto, precios en USD y COP, compra con carrito o WhatsApp.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="announce">hecho a mano en colombia &middot; env&iacute;o coordinado por whatsapp</div>
+
+    <header class="site-header" id="header">
+        <div class="site-header__inner">
+            <button class="nav-toggle" data-nav-toggle aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <a href="index.html" class="site-logo" aria-label="Alma de Mar&iacute;a — inicio">
+                <img src="img/logo/Logo secundario.png" alt="Alma de Mar&iacute;a">
+            </a>
+            <nav class="site-nav" aria-label="Principal">
+                <button class="nav-close" data-nav-close aria-label="Cerrar men&uacute;">&times;</button>
+                <a class="site-nav__link" href="index.html#rosarios">rosarios</a>
+                <a class="site-nav__link" href="index.html#pulseras">pulseras</a>
+                <a class="site-nav__link" href="index.html#escapulario">escapulario</a>
+                <a class="site-nav__link" href="index.html#nosotros">nosotros</a>
+                <a class="site-nav__link" href="faq.html">faq</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-button" data-open-cart aria-label="Abrir carrito">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5.5 8h13l-1.2 13h-10.6L5.5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+                    <span class="cart-count is-empty" data-cart-count>0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="container" id="product-root"></div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bar">
+                <div class="region-field">
+                    <span>Country/region</span>
+                    <select class="region-select" data-region-select aria-label="Country/region"></select>
+                </div>
+                <p class="footer-legal">&copy; 2026, Alma de Mar&iacute;a Joyas &middot; <a href="index.html">Inicio</a> &middot; <a href="faq.html">Env&iacute;os y pagos</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="drawer-backdrop" data-close-cart></div>
+    <aside class="cart-drawer" aria-label="Carrito de compras">
+        <div class="cart-drawer__head">
+            <h2>Tu carrito</h2>
+            <button class="cart-drawer__close" data-close-cart aria-label="Cerrar carrito">&times;</button>
+        </div>
+        <div class="cart-drawer__body" id="drawer-body"></div>
+        <div class="cart-drawer__footer" id="drawer-footer"></div>
+    </aside>
+
+    <script src="js/data.js"></script>
+    <script src="js/store-core.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/product-page.js"></script>
+</body>
+</html>

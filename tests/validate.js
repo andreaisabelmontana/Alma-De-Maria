@@ -1,8 +1,10 @@
 /**
- * Alma de María - Automated Validation Tests
+ * Alma de María — automated validation tests.
  *
- * Validates HTML structure, image references, product catalog completeness,
- * and link integrity for the static website.
+ * 1. Catalog integrity (js/data.js): ids, prices, images on disk.
+ * 2. Store logic (js/store-core.js): currency conversion, cart ops, order message.
+ * 3. Page structure: every HTML page, its assets and its wiring.
+ * 4. Infrastructure files.
  *
  * Usage: node tests/validate.js
  */
@@ -11,7 +13,8 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf-8');
+const DATA = require(path.join(ROOT, 'js', 'data.js'));
+const Core = require(path.join(ROOT, 'js', 'store-core.js'));
 
 let passed = 0;
 let failed = 0;
@@ -32,238 +35,267 @@ function assert(condition, message) {
     if (!condition) throw new Error(message);
 }
 
-// ========================================
-// 1. HTML Structure Tests
-// ========================================
-console.log('\n── HTML Structure ──');
-
-test('index.html exists', () => {
-    assert(fs.existsSync(path.join(ROOT, 'index.html')), 'index.html not found');
-});
-
-test('styles.css exists', () => {
-    assert(fs.existsSync(path.join(ROOT, 'styles.css')), 'styles.css not found');
-});
-
-test('script.js exists', () => {
-    assert(fs.existsSync(path.join(ROOT, 'script.js')), 'script.js not found');
-});
-
-test('has DOCTYPE declaration', () => {
-    assert(html.includes('<!DOCTYPE html>'), 'Missing DOCTYPE');
-});
-
-test('has lang="es" attribute', () => {
-    assert(html.includes('lang="es"'), 'Missing Spanish language attribute');
-});
-
-test('has viewport meta tag', () => {
-    assert(html.includes('viewport'), 'Missing viewport meta tag');
-});
-
-test('has meta description', () => {
-    assert(html.includes('meta name="description"'), 'Missing meta description');
-});
-
-test('references styles.css', () => {
-    assert(html.includes('href="styles.css"'), 'Missing styles.css link');
-});
-
-test('references script.js', () => {
-    assert(html.includes('src="script.js"'), 'Missing script.js reference');
-});
-
-// ========================================
-// 2. Required Sections
-// ========================================
-console.log('\n── Required Sections ──');
-
-const requiredSections = [
-    { id: 'header', label: 'Header/Navigation' },
-    { id: 'inicio', label: 'Hero section' },
-    { id: 'nosotros', label: 'About section' },
-    { id: 'rosarios', label: 'Rosarios section' },
-    { id: 'pulseras', label: 'Pulseras section' },
-    { id: 'escapulario', label: 'Escapulario section' },
-    { id: 'contacto', label: 'Contact section' },
-];
-
-requiredSections.forEach(({ id, label }) => {
-    test(`has ${label} (id="${id}")`, () => {
-        assert(html.includes(`id="${id}"`), `Missing section with id="${id}"`);
-    });
-});
-
-test('has footer', () => {
-    assert(html.includes('<footer'), 'Missing footer element');
-});
-
-test('has lightbox', () => {
-    assert(html.includes('id="lightbox"'), 'Missing lightbox element');
-});
-
-// ========================================
-// 3. Product Catalog Completeness
-// ========================================
-console.log('\n── Product Catalog (24 Rosarios) ──');
-
-const expectedRosarios = [
-    'Rosario de la Paz',
-    'Rosario Lourdes',
-    'Rosario Beatriz',
-    'Rosario Elsa',
-    'Rosario Silvia',
-    'Rosario Esperanza Mini',
-    'Rosario Mar\u00eda',
-    'Rosario Sagrada Familia',
-    'Rosario Eulalia',
-    'Rosario Claudia',
-    'Rosario Andrea',
-    'Rosario Pio',
-    'Rosario Isabel',
-    'Rosario Ana',
-    'Rosario Laura',
-    'Rosario Alfonso',
-];
-
-expectedRosarios.forEach(name => {
-    test(`has product: ${name}`, () => {
-        // Check for plain text or HTML-encoded version
-        const plainCheck = html.includes(name);
-        const encodedName = name
-            .replace(/í/g, '&iacute;')
-            .replace(/á/g, '&aacute;')
-            .replace(/é/g, '&eacute;')
-            .replace(/ñ/g, '&ntilde;')
-            .replace(/ó/g, '&oacute;')
-            .replace(/ú/g, '&uacute;');
-        const encodedCheck = html.includes(encodedName);
-        assert(plainCheck || encodedCheck, `Product "${name}" not found in HTML`);
-    });
-});
-
-test('has 24 product cards total', () => {
-    const cardCount = (html.match(/class="product-card /g) || []).length;
-    assert(cardCount === 24, `Expected 24 product cards, found ${cardCount}`);
-});
-
-// ========================================
-// 4. Image Reference Validation
-// ========================================
-console.log('\n── Image References ──');
-
-const imgDir = path.join(ROOT, 'img');
-const logoDir = path.join(ROOT, 'img', 'logo');
-
-test('img/ directory exists', () => {
-    assert(fs.existsSync(imgDir), 'img/ directory not found');
-});
-
-test('img/logo/ directory exists', () => {
-    assert(fs.existsSync(logoDir), 'img/logo/ directory not found');
-});
-
-// Extract all img src attributes from HTML
-const srcRegex = /src="(img\/[^"]+)"/g;
-const imgRefs = [];
-let match;
-while ((match = srcRegex.exec(html)) !== null) {
-    imgRefs.push(match[1]);
+function assertEq(actual, expected, label) {
+    assert(actual === expected, `${label}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`);
 }
 
-test(`found image references in HTML (${imgRefs.length})`, () => {
-    assert(imgRefs.length > 0, 'No image references found');
+function read(file) {
+    return fs.readFileSync(path.join(ROOT, file), 'utf-8');
+}
+
+// ========================================
+// 1. Catalog integrity
+// ========================================
+console.log('\n── Catalog (js/data.js) ──');
+
+test('catalog has at least 26 products', () => {
+    assert(DATA.PRODUCTS.length >= 26, `Found only ${DATA.PRODUCTS.length}`);
 });
 
-// Check each referenced image exists
-const missingImages = [];
-imgRefs.forEach(ref => {
-    const filePath = path.join(ROOT, ref);
-    if (!fs.existsSync(filePath)) {
-        missingImages.push(ref);
-    }
+test('catalog has 24 rosarios', () => {
+    const rosarios = DATA.PRODUCTS.filter(p => p.category === 'rosarios');
+    assertEq(rosarios.length, 24, 'rosario count');
+});
+
+test('product ids are unique', () => {
+    const ids = DATA.PRODUCTS.map(p => p.id);
+    assertEq(new Set(ids).size, ids.length, 'unique ids');
+});
+
+test('every product has a positive COP price', () => {
+    DATA.PRODUCTS.forEach(p => {
+        assert(Number.isFinite(p.priceCop) && p.priceCop > 0, `${p.id} has bad price ${p.priceCop}`);
+    });
+});
+
+test('every product image exists on disk', () => {
+    const missing = [];
+    DATA.PRODUCTS.forEach(p => {
+        [p.image].concat(p.images || []).forEach(src => {
+            if (!fs.existsSync(path.join(ROOT, src))) missing.push(`${p.id}: ${src}`);
+        });
+    });
+    assert(missing.length === 0, `Missing images: ${missing.join(', ')}`);
+});
+
+test('every product category belongs to a collection', () => {
+    const collections = new Set(DATA.COLLECTIONS.map(c => c.id));
+    DATA.PRODUCTS.forEach(p => {
+        assert(collections.has(p.category), `${p.id} has unknown category ${p.category}`);
+    });
+});
+
+test('variant products have valid variant prices', () => {
+    DATA.PRODUCTS.filter(p => p.variants).forEach(p => {
+        assert(p.variants.length >= 2, `${p.id} has fewer than 2 variants`);
+        p.variants.forEach(v => {
+            assert(v.name && Number.isFinite(v.priceCop) && v.priceCop > 0, `${p.id} variant broken`);
+        });
+    });
+});
+
+test('WhatsApp number configured', () => {
+    assertEq(DATA.WHATSAPP_NUMBER, '573237126697', 'WhatsApp number');
+});
+
+// ========================================
+// 2. Store logic
+// ========================================
+console.log('\n── Currency conversion ──');
+
+test('COP→USD uses the documented reference rate', () => {
+    assertEq(Core.COP_PER_USD, 4000, 'rate');
+    assertEq(Core.copToUsd(150000), 37.5, '150.000 COP in USD');
+});
+
+test('formatPrice renders USD with cents', () => {
+    assertEq(Core.formatPrice(150000, 'USD'), '$37.50', 'USD format');
+    assertEq(Core.formatPrice(50000, 'USD'), '$12.50', 'USD format');
+});
+
+test('formatPrice renders COP with dot separators', () => {
+    assertEq(Core.formatPrice(150000, 'COP'), '$150.000 COP', 'COP format');
+    assertEq(Core.formatPrice(1234567, 'COP'), '$1.234.567 COP', 'COP format');
+});
+
+console.log('\n── Cart operations ──');
+
+test('addItem adds a new line and merges repeats', () => {
+    let cart = Core.addItem([], 'rosario-ana', null, 1);
+    cart = Core.addItem(cart, 'rosario-ana', null, 2);
+    assertEq(cart.length, 1, 'lines');
+    assertEq(cart[0].qty, 3, 'merged qty');
+});
+
+test('variants are separate cart lines', () => {
+    let cart = Core.addItem([], 'pulsera-alma', 'Individual', 1);
+    cart = Core.addItem(cart, 'pulsera-alma', 'Set de 3', 1);
+    assertEq(cart.length, 2, 'lines');
+});
+
+test('setQty updates and removes at zero', () => {
+    let cart = Core.addItem([], 'rosario-ana', null, 2);
+    cart = Core.setQty(cart, 'rosario-ana', 5);
+    assertEq(cart[0].qty, 5, 'set qty');
+    cart = Core.setQty(cart, 'rosario-ana', 0);
+    assertEq(cart.length, 0, 'removed at zero');
+});
+
+test('removeItem removes only the matching line', () => {
+    let cart = Core.addItem([], 'rosario-ana', null, 1);
+    cart = Core.addItem(cart, 'rosario-laura', null, 1);
+    cart = Core.removeItem(cart, 'rosario-ana');
+    assertEq(cart.length, 1, 'lines');
+    assertEq(cart[0].id, 'rosario-laura', 'remaining line');
+});
+
+test('cartSubtotalCop honours variant pricing', () => {
+    let cart = Core.addItem([], 'pulsera-alma', 'Set de 3', 1);
+    cart = Core.addItem(cart, 'rosario-nina-maria', null, 2);
+    // 170.000 + 2 × 50.000 = 270.000
+    assertEq(Core.cartSubtotalCop(cart, DATA.PRODUCTS), 270000, 'subtotal');
+});
+
+test('cartCount sums quantities', () => {
+    let cart = Core.addItem([], 'rosario-ana', null, 2);
+    cart = Core.addItem(cart, 'escapulario', null, 1);
+    assertEq(Core.cartCount(cart), 3, 'count');
+});
+
+test('pruneCart drops unknown products', () => {
+    const cart = [{ id: 'no-longer-sold', variant: null, qty: 1 }, { id: 'rosario-ana', variant: null, qty: 1 }];
+    assertEq(Core.pruneCart(cart, DATA.PRODUCTS).length, 1, 'pruned length');
+});
+
+console.log('\n── Order message ──');
+
+test('buildOrderMessage includes items, totals and contact', () => {
+    const cart = Core.addItem(Core.addItem([], 'rosario-ana', null, 1), 'pulsera-alma', 'Set de 3', 2);
+    const msg = Core.buildOrderMessage({
+        reference: 'AM-TEST1',
+        cart,
+        products: DATA.PRODUCTS,
+        currency: 'USD',
+        contact: { email: 'cliente@example.com' },
+        shipping: { name: 'Ana Pérez', address: 'Calle 1 # 2-3', city: 'Bogotá', country: 'Colombia', phone: '3001234567' }
+    });
+    ['AM-TEST1', 'Rosario Ana', 'Pulsera Alma (Set de 3)', 'cliente@example.com', 'Bogotá', 'Subtotal'].forEach(part => {
+        assert(msg.includes(part), `Message missing "${part}"`);
+    });
+    // 150.000 + 2 × 170.000 = 490.000 COP = $122.50
+    assert(msg.includes('$122.50'), 'Message missing USD subtotal');
+    assert(msg.includes('$490.000 COP'), 'Message missing COP subtotal');
+});
+
+test('whatsappUrl encodes the message for wa.me', () => {
+    const url = Core.whatsappUrl('573237126697', 'Hola ¿qué tal?');
+    assert(url.startsWith('https://wa.me/573237126697?text='), 'URL prefix');
+    assert(!url.includes('¿'), 'URL should be percent-encoded');
+});
+
+// ========================================
+// 3. Page structure
+// ========================================
+console.log('\n── Pages ──');
+
+const PAGES = ['index.html', 'product.html', 'checkout.html', 'faq.html'];
+
+PAGES.forEach(page => {
+    test(`${page} exists with doctype, viewport and stylesheet`, () => {
+        const html = read(page);
+        assert(html.includes('<!DOCTYPE html>'), 'Missing DOCTYPE');
+        assert(html.includes('viewport'), 'Missing viewport meta');
+        assert(html.includes('href="styles.css"'), 'Missing styles.css');
+        assert(html.includes('<title>'), 'Missing title');
+        assert(html.includes('js/data.js') && html.includes('js/store-core.js') && html.includes('js/app.js'), 'Missing store scripts');
+    });
+});
+
+test('index.html renders collection grids from the catalog', () => {
+    const html = read('index.html');
+    assert(html.includes('data-collection-grid="rosarios"'), 'Missing rosarios grid');
+    assert(html.includes('data-collection-grid="pulseras"'), 'Missing pulseras grid');
+});
+
+test('index.html keeps its section anchors', () => {
+    const html = read('index.html');
+    ['inicio', 'rosarios', 'pulseras', 'escapulario', 'nosotros', 'contacto'].forEach(id => {
+        assert(html.includes(`id="${id}"`), `Missing id="${id}"`);
+    });
+});
+
+test('index.html has country/region selector and payment icons', () => {
+    const html = read('index.html');
+    assert(html.includes('data-region-select'), 'Missing region select');
+    assert(html.includes('payment-icons'), 'Missing payment icons');
+    assert(html.includes('Country/region'), 'Missing region label');
+});
+
+test('product.html has the product root and page script', () => {
+    const html = read('product.html');
+    assert(html.includes('id="product-root"'), 'Missing product root');
+    assert(html.includes('js/product-page.js'), 'Missing product page script');
+});
+
+test('checkout.html has steps + summary containers and page script', () => {
+    const html = read('checkout.html');
+    assert(html.includes('id="checkout-steps"'), 'Missing steps container');
+    assert(html.includes('id="checkout-summary"'), 'Missing summary container');
+    assert(html.includes('js/checkout-page.js'), 'Missing checkout script');
+});
+
+test('storefront pages include the cart drawer', () => {
+    ['index.html', 'product.html', 'faq.html'].forEach(page => {
+        const html = read(page);
+        assert(html.includes('id="drawer-body"') && html.includes('id="drawer-footer"'), `${page} missing cart drawer`);
+        assert(html.includes('data-open-cart'), `${page} missing cart button`);
+    });
 });
 
 test('all referenced images exist on disk', () => {
-    assert(
-        missingImages.length === 0,
-        `Missing images: ${missingImages.join(', ')}`
-    );
-});
-
-// ========================================
-// 5. WhatsApp Integration
-// ========================================
-console.log('\n── WhatsApp Integration ──');
-
-test('has WhatsApp floating button', () => {
-    assert(html.includes('wa-float'), 'Missing WhatsApp floating button');
-});
-
-test('WhatsApp links use correct number', () => {
-    const waLinks = html.match(/wa\.me\/\d+/g) || [];
-    assert(waLinks.length > 0, 'No WhatsApp links found');
-    waLinks.forEach(link => {
-        assert(link.includes('573237126697'), `Wrong WhatsApp number in: ${link}`);
+    const missing = [];
+    PAGES.forEach(page => {
+        const html = read(page);
+        const srcRegex = /src="(img\/[^"]+)"/g;
+        let match;
+        while ((match = srcRegex.exec(html)) !== null) {
+            if (!fs.existsSync(path.join(ROOT, match[1]))) missing.push(`${page}: ${match[1]}`);
+        }
     });
+    assert(missing.length === 0, `Missing images: ${missing.join(', ')}`);
 });
-
-test('has per-product WhatsApp ordering (lightbox)', () => {
-    assert(html.includes('id="lightbox-wa"'), 'Missing lightbox WhatsApp link');
-});
-
-// ========================================
-// 6. Accessibility & SEO
-// ========================================
-console.log('\n── Accessibility & SEO ──');
 
 test('images have alt attributes', () => {
-    const imgsWithoutAlt = (html.match(/<img(?![^>]*alt=)[^>]*>/g) || []);
-    assert(
-        imgsWithoutAlt.length === 0,
-        `Found ${imgsWithoutAlt.length} images without alt attributes`
-    );
-});
-
-test('has title tag', () => {
-    assert(html.includes('<title>'), 'Missing title tag');
-});
-
-test('title contains brand name', () => {
-    assert(
-        html.includes('Alma de Mar') || html.includes('Alma de Mar&iacute;a'),
-        'Title does not contain brand name'
-    );
-});
-
-// ========================================
-// 7. Navigation Links
-// ========================================
-console.log('\n── Navigation ──');
-
-const navLinks = ['#inicio', '#nosotros', '#rosarios', '#pulseras', '#escapulario', '#contacto'];
-
-navLinks.forEach(link => {
-    test(`nav link ${link} exists`, () => {
-        assert(html.includes(`href="${link}"`), `Missing nav link: ${link}`);
+    PAGES.forEach(page => {
+        const html = read(page);
+        const withoutAlt = html.match(/<img(?![^>]*alt=)[^>]*>/g) || [];
+        assert(withoutAlt.length === 0, `${page} has ${withoutAlt.length} images without alt`);
     });
 });
 
-// ========================================
-// 8. Docker Files
-// ========================================
-console.log('\n── Docker Configuration ──');
-
-test('Dockerfile exists', () => {
-    assert(fs.existsSync(path.join(ROOT, 'Dockerfile')), 'Dockerfile not found');
+test('WhatsApp links use the correct number', () => {
+    PAGES.forEach(page => {
+        const html = read(page);
+        (html.match(/wa\.me\/\d+/g) || []).forEach(link => {
+            assert(link.includes('573237126697'), `${page}: wrong number in ${link}`);
+        });
+    });
 });
 
-test('docker-compose.yml exists', () => {
-    assert(fs.existsSync(path.join(ROOT, 'docker-compose.yml')), 'docker-compose.yml not found');
+test('checkout is honest about payment handling', () => {
+    const js = read('js/checkout-page.js');
+    assert(/no se procesa en este sitio|no procesa tarjetas/i.test(js), 'Checkout must state that no card payments are processed on-site');
 });
 
-test('nginx.conf exists', () => {
-    assert(fs.existsSync(path.join(ROOT, 'nginx.conf')), 'nginx.conf not found');
+// ========================================
+// 4. Infrastructure
+// ========================================
+console.log('\n── Infrastructure ──');
+
+['Dockerfile', 'docker-compose.yml', 'nginx.conf', '.github/workflows/ci.yml', '.github/workflows/static.yml'].forEach(file => {
+    test(`${file} exists`, () => {
+        assert(fs.existsSync(path.join(ROOT, file)), `${file} not found`);
+    });
 });
 
 // ========================================

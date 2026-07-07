@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Alma de Mar&iacute;a</title>
+    <meta name="description" content="Finaliza tu pedido de Alma de Mar&iacute;a. El pago se confirma por WhatsApp — este sitio no procesa tarjetas.">
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="checkout-header">
+        <a href="index.html" aria-label="Volver a la tienda">
+            <img src="img/logo/Logo secundario.png" alt="Alma de Mar&iacute;a">
+        </a>
+    </header>
+
+    <main class="checkout-layout">
+        <section class="checkout-left" aria-label="Datos del pedido">
+            <div id="checkout-steps"></div>
+        </section>
+        <aside class="checkout-right" aria-label="Resumen del pedido">
+            <div id="checkout-summary"></div>
+        </aside>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/store-core.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/checkout-page.js"></script>
+</body>
+</html>
