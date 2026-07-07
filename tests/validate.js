@@ -48,13 +48,13 @@ function read(file) {
 // ========================================
 console.log('\n── Catalog (js/data.js) ──');
 
-test('catalog has at least 26 products', () => {
-    assert(DATA.PRODUCTS.length >= 26, `Found only ${DATA.PRODUCTS.length}`);
+test('catalog has at least 37 products', () => {
+    assert(DATA.PRODUCTS.length >= 37, `Found only ${DATA.PRODUCTS.length}`);
 });
 
-test('catalog has 24 rosarios', () => {
+test('catalog has 33 rosarios', () => {
     const rosarios = DATA.PRODUCTS.filter(p => p.category === 'rosarios');
-    assertEq(rosarios.length, 24, 'rosario count');
+    assertEq(rosarios.length, 33, 'rosario count');
 });
 
 test('product ids are unique', () => {
@@ -128,8 +128,8 @@ test('addItem adds a new line and merges repeats', () => {
 });
 
 test('variants are separate cart lines', () => {
-    let cart = Core.addItem([], 'pulsera-alma', 'Individual', 1);
-    cart = Core.addItem(cart, 'pulsera-alma', 'Set de 3', 1);
+    let cart = Core.addItem([], 'pulsera-cristal-azul', 'Individual', 1);
+    cart = Core.addItem(cart, 'pulsera-cristal-azul', 'Set de 3', 1);
     assertEq(cart.length, 2, 'lines');
 });
 
@@ -150,7 +150,7 @@ test('removeItem removes only the matching line', () => {
 });
 
 test('cartSubtotalCop honours variant pricing', () => {
-    let cart = Core.addItem([], 'pulsera-alma', 'Set de 3', 1);
+    let cart = Core.addItem([], 'pulsera-cristal-azul', 'Set de 3', 1);
     cart = Core.addItem(cart, 'rosario-nina-maria', null, 2);
     // 170.000 + 2 × 50.000 = 270.000
     assertEq(Core.cartSubtotalCop(cart, DATA.PRODUCTS), 270000, 'subtotal');
@@ -170,7 +170,7 @@ test('pruneCart drops unknown products', () => {
 console.log('\n── Order message ──');
 
 test('buildOrderMessage includes items, totals and contact', () => {
-    const cart = Core.addItem(Core.addItem([], 'rosario-ana', null, 1), 'pulsera-alma', 'Set de 3', 2);
+    const cart = Core.addItem(Core.addItem([], 'rosario-ana', null, 1), 'pulsera-cristal-azul', 'Set de 3', 2);
     const msg = Core.buildOrderMessage({
         reference: 'AM-TEST1',
         cart,
@@ -179,7 +179,7 @@ test('buildOrderMessage includes items, totals and contact', () => {
         contact: { email: 'cliente@example.com' },
         shipping: { name: 'Ana Pérez', address: 'Calle 1 # 2-3', city: 'Bogotá', country: 'Colombia', phone: '3001234567' }
     });
-    ['AM-TEST1', 'Rosario Ana', 'Pulsera Alma (Set de 3)', 'cliente@example.com', 'Bogotá', 'Subtotal'].forEach(part => {
+    ['AM-TEST1', 'Rosario Ana', 'Pulsera Cristal Azul (Set de 3)', 'cliente@example.com', 'Bogotá', 'Subtotal'].forEach(part => {
         assert(msg.includes(part), `Message missing "${part}"`);
     });
     // 150.000 + 2 × 170.000 = 490.000 COP = $122.50
