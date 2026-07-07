@@ -72,18 +72,6 @@ input, select { font: inherit; color: inherit; }
 
 .shop-word { font-weight: 800; letter-spacing: 0.01em; }
 
-/* ── Announcement bar ─────────────────────────────────────────────── */
-
-.announce {
-    background: var(--ink);
-    color: var(--cream);
-    text-align: center;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 9px 16px;
-}
-
 /* ── Header ───────────────────────────────────────────────────────── */
 
 .site-header {
