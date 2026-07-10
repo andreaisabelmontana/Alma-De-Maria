@@ -1,6 +1,6 @@
 # Alma de María — Artisan Jewelry Store
 
-Static e-commerce storefront for **Alma de María**, a Colombian artisan jewelry brand (handcrafted rosaries, bracelets and escapularios). Built as a real multi-page store: product pages, persistent cart, dual-currency pricing (USD/COP) and a guided checkout that completes each order through WhatsApp — the brand's actual sales channel.
+Static e-commerce storefront for **Alma de María**, a Colombian artisan jewelry brand (handcrafted rosaries, bracelets and escapularios). A real multi-page store: product pages, persistent cart, dual-currency pricing (USD/COP) and a guided checkout that completes each order through WhatsApp — the brand's actual sales channel.
 
 **Live site:** https://andreaisabelmontana.github.io/Alma-De-Maria/
 
